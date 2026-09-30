@@ -1,10 +1,11 @@
 import Character from '../Character';
 
 export default class Magician extends Character {
+  static BASE_ATTACK = 10;
+
+  static BASE_DEFENCE = 40;
+
   constructor(level) {
     super(level, 'magician');
-    this.attack = 10;
-    this.defence = 40;
-    for (let i = 1; i < level; i += 1) this.levelUp();
   }
 }

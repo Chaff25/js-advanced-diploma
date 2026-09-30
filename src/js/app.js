@@ -1,6 +1,7 @@
 /**
  * Entry point of app: don't change this
  */
+import '../css/style.css';
 import GamePlay from './GamePlay';
 import GameController from './GameController';
 import GameStateService from './GameStateService';

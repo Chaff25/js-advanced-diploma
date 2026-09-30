@@ -32,13 +32,15 @@ describe('toCoords / toIndex / isInBoard', () => {
 
 describe('getAvailableMoves', () => {
   test('Swordsman в центре поля ходит на 4 клетки', () => {
-    const swordsman = new Swordsman(1);
-    const position = toIndex(3, 3, BS); // (3,3)
-    const moves = getAvailableMoves(swordsman, position, BS, new Set());
-    expect(moves).toContain(toIndex(7, 3, BS));
-    expect(moves).toContain(toIndex(3, 7, BS));
-    expect(moves).not.toContain(toIndex(7, 7, BS));
-  });
+  const swordsman = new Swordsman(1);
+  const position = toIndex(3, 3, BS);
+  const moves = getAvailableMoves(swordsman, position, BS, new Set());
+  expect(moves).toContain(toIndex(7, 3, BS)); 
+  expect(moves).toContain(toIndex(3, 7, BS)); 
+  expect(moves).toContain(toIndex(0, 0, BS)); 
+  expect(moves).toContain(toIndex(7, 7, BS)); 
+  expect(moves).toContain(toIndex(6, 0, BS));
+});
 
   test('Swordsman в углу ходит меньше', () => {
     const swordsman = new Swordsman(1);

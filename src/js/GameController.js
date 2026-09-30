@@ -1,3 +1,4 @@
+import GamePlay from './GamePlay';
 import themes from './themes';
 import cursors from './cursors';
 import PositionedCharacter from './PositionedCharacter';
@@ -189,7 +190,7 @@ export default class GameController {
 
     if (!this.selectedCharacter) {
       if (!this.isPlayerCharacter(positioned)) {
-        this.gamePlay.showError('Выберите персонажа игрока');
+        GamePlay.showError('Выберите персонажа игрока');
         return;
       }
       this.selectedCharacter = positioned;
@@ -237,7 +238,7 @@ export default class GameController {
       return;
     }
 
-    this.gamePlay.showError('Недопустимое действие');
+    GamePlay.showError('Недопустимое действие');
   }
 
   moveSelected(targetIndex) {
@@ -321,7 +322,7 @@ export default class GameController {
   gameOver(isWin) {
     this.gamePlay.setCursor('default');
     this.gamePlay.boardEl.style.pointerEvents = 'none';
-    this.gamePlay.showMessage(isWin ? 'Победа!' : 'Поражение');
+    GamePlay.showMessage(isWin ? 'Победа!' : 'Поражение');
   }
 
   changeTurn() {
@@ -466,7 +467,7 @@ export default class GameController {
 
       this.gamePlay.redrawPositions(this.positionedCharacters);
     } catch (e) {
-      this.gamePlay.showError('Не удалось загрузить состояние');
+      GamePlay.showError('Не удалось загрузить состояние');
     }
   }
 }

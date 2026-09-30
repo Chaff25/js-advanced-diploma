@@ -10,18 +10,18 @@ describe('formatCharacterInfo', () => {
   });
 
   test('форматирует информацию о персонаже 1-го уровня', () => {
-    const bowman = new Bowman(1); 
+    const bowman = new Bowman(1);
     expect(formatCharacterInfo`${bowman}`).toBe('🎖1 ⚔25 🛡25 ❤50');
   });
 
   test('форматирует информацию о персонаже 3-го уровня', () => {
     const bowman = new Bowman(3);
-    expect(formatCharacterInfo`${bowman}`).toBe('🎖3 ⚔25 🛡25 ❤50');
+    expect(formatCharacterInfo`${bowman}`).toBe('🎖3 ⚔81 🛡81 ❤100');
   });
 
   test('корректно выводит атаку/защиту Daemon', () => {
-    const daemon = new Daemon(2); 
-    expect(formatCharacterInfo`${daemon}`).toBe('🎖2 ⚔10 🛡10 ❤50');
+    const daemon = new Daemon(2);
+    expect(formatCharacterInfo`${daemon}`).toBe('🎖2 ⚔18 🛡18 ❤100');
   });
 });
 

@@ -1,10 +1,18 @@
 import GameController from '../GameController';
-import GameStateService from '../GameStateService';
+import GamePlay from '../GamePlay';
 
 describe('GameController.onLoadGameClick', () => {
-  test('при ошибке load вызывается showError', () => {
+  beforeEach(() => {
+    global.alert = jest.fn();
+    jest.spyOn(GamePlay, 'showError').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  test('при ошибке load вызывается GamePlay.showError', () => {
     const gamePlay = {
-      showError: jest.fn(),
       boardEl: { classList: { remove: jest.fn(), add: jest.fn() }, style: {} },
       redrawPositions: jest.fn(),
     };
@@ -13,6 +21,6 @@ describe('GameController.onLoadGameClick', () => {
     const controller = new GameController(gamePlay, stateService);
     controller.onLoadGameClick();
 
-    expect(gamePlay.showError).toHaveBeenCalledWith('Не удалось загрузить состояние');
+    expect(GamePlay.showError).toHaveBeenCalledWith('Не удалось загрузить состояние');
   });
 });

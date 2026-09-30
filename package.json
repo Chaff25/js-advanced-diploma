@@ -1,9 +1,9 @@
 {
-  "name": "retro-game",
+  "name": "js-advanced-diploma",
   "version": "1.0.0",
   "private": true,
   "description": "Retro Game (Netology diploma)",
-  "homepage": "https://Chaff25.github.io/retro-game",
+  "homepage": "https://Chaff25.github.io/js-advanced-diploma",
   "scripts": {
     "deploy": "npm run build && gh-pages -d dist",
     "start": "webpack serve --mode development",
