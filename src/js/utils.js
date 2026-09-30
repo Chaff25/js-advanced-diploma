@@ -23,7 +23,22 @@
  * ```
  * */
 export function calcTileType(index, boardSize) {
-  // TODO: ваш код будет тут
+  const row = Math.floor(index / boardSize);
+  const col = index % boardSize;
+
+  const isTop = row === 0;
+  const isBottom = row === boardSize - 1;
+  const isLeft = col === 0;
+  const isRight = col === boardSize - 1;
+
+  if (isTop && isLeft) return 'top-left';
+  if (isTop && isRight) return 'top-right';
+  if (isBottom && isLeft) return 'bottom-left';
+  if (isBottom && isRight) return 'bottom-right';
+  if (isTop) return 'top';
+  if (isBottom) return 'bottom';
+  if (isLeft) return 'left';
+  if (isRight) return 'right';
   return 'center';
 }
 
@@ -37,4 +52,30 @@ export function calcHealthLevel(health) {
   }
 
   return 'high';
+}
+
+const LEVEL_ICON = '\u{1F396}';   // 🎖 — уровень
+const ATTACK_ICON = '\u2694';     // ⚔ — атака
+const DEFENCE_ICON = '\u{1F6E1}'; // 🛡 — защита
+const HEALTH_ICON = '\u2764';     // ❤ — здоровье
+
+/**
+ * Тегированный шаблон для форматирования информации о персонаже.
+ * Возвращает строку вида: 🎖1 ⚔10 🛡40 ❤50
+ *
+ * @example
+ * ```js
+ * formatCharacterInfo`${character}`; // '🎖1 ⚔25 🛡25 ❤50'
+ * ```
+ */
+export function formatCharacterInfo(strings, character) {
+  if (!character) {
+    return '';
+  }
+
+  const {
+    level, attack, defence, health,
+  } = character;
+
+  return `${LEVEL_ICON}${level} ${ATTACK_ICON}${attack} ${DEFENCE_ICON}${defence} ${HEALTH_ICON}${health}`;
 }
